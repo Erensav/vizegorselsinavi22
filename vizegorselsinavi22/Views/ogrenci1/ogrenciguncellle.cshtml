@@ -1,0 +1,47 @@
+﻿@model vizegorselsinavi22.Models.Entity.tbl_ogrenciler
+
+@{
+    ViewBag.Title = "ogrenciguncellle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    // Bölüm listesi (Örnek: Veritabanından veya sabit bir liste olarak tanımlanabilir)
+    var bolumler = new List<string>() { "Bilgisayar", "Makine", "isletme" };
+
+    // Mezuniyet durumu listesi
+    var mezuniyetDurumlari = new List<string>() { "Mezun", "Mezun Değil" };
+}
+
+@using (Html.BeginForm("Guncelle", "ogrenci1", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.ogrenciid)
+        @Html.TextBoxFor(m => m.ogrenciid, new { @class = "form-control" })
+
+        @Html.LabelFor(m => m.ogrenciAdSoyadi)
+        @Html.TextBoxFor(m => m.ogrenciAdSoyadi, new { @class = "form-control" })
+
+        @Html.LabelFor(m => m.ogrenciNo)
+        @Html.TextBoxFor(m => m.ogrenciNo, new { @class = "form-control" })
+
+        @Html.LabelFor(m => m.ogrencimail)
+        @Html.TextBoxFor(m => m.ogrencimail, new { @class = "form-control" })
+
+        <div class="form-group">
+            @Html.Label("Bölüm")
+            @Html.DropDownList("ogrencibolum", new SelectList(bolumler), new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Mezuniyet Durumu")
+            @Html.DropDownList("ogrenciMezun", new SelectList(mezuniyetDurumlari), new { @class = "form-control" })
+        </div>
+
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+        }
+    </div>
+    <div>
+        <button class="btn btn-warning">Bilgileri Guncelle</button>
+    </div>
+}

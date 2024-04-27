@@ -1,0 +1,36 @@
+﻿@using vizegorselsinavi22.Models.Entity;
+@model List<tbl_ogretmen>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Ogretmen ID</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Basla</th>
+        <th>Cikis</th>
+        <th>Bolum</th>
+        <th>SIL</th>
+        <th>GUNCELLE</th>
+
+    </tr>
+    <tbody>
+        @foreach (var ogrt in Model)
+        {
+            <tr>
+                <th>@ogrt.ogretmenid</th>
+                <td>@ogrt.ogretmenAd</td>
+                <td>@ogrt.ogretmenSoyad</td>
+                <td>@ogrt.ogretmenBasla</td>
+                <td>@ogrt.ogretmenCikis</td>
+                <td>@ogrt.ogretmenBolum</td>
+                <td><a href="/ogretmen1/SIL/@ogrt.ogretmenid" class="btn btn-danger">SIL</a></td>
+                <td><a href="/ogretmen1/Guncelle/@ogrt.ogretmenid" class="btn btn-success">GUNCELLE</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/ogretmen1/Yeniogretmen/" class="btn btn-primary">YENI OGRETMEN EKLE</a>

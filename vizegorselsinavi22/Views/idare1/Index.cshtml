@@ -1,0 +1,35 @@
+﻿@using vizegorselsinavi22.Models.Entity;
+@model List<tbl_idari>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Yonetici ID</th>
+        <th>Ad Soyad</th>        
+        <th>Unvan</th>
+        <th>Basla</th>
+        <th>Cikis</th>
+        <th>SIL</th>
+        <th>GUNCELLE</th>
+
+    </tr>
+    <tbody>
+        @foreach (var idre in Model)
+        {
+            <tr>
+                <td>@idre.idariid</td>
+                <th>@idre.idariAdSoyad</th>
+                <td>@idre.idariUnvan</td>
+                <td>@idre.idariBasla</td>
+                <td>@idre.idariCikis</td>                
+                <td><a href="/idare1/SIL/@idre.idariid" class="btn btn-danger">SIL</a></td>
+                <td><a href="/idare1/Guncelle/@idre.idariid" class="btn btn-success">GUNCELLE</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/idare1/Yeniidare/" class="btn btn-primary">YENI YONETICI EKLE</a>
+

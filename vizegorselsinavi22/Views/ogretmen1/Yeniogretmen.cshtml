@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Yeniogretmen";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<form class="form-group" method="post">
+
+    <div>
+        <label>Ogretmen Ad</label>
+        <input type="text" class="form-control" name="ogretmenAd" />
+    </div>
+    <div>
+        <label>Ogretmen Soyad</label>
+        <input type="text" class="form-control" name="ogretmenSoyad" />
+    </div>
+    <div>
+        <label>Baslama Tarihi</label>
+        <input type="date" class="form-control" name="ogretmenBasla" />
+    </div>
+    <div>
+        <label>Cikis Tarihi</label>
+        <input type="date" class="form-control" name="ogretmenCikis" />
+    </div>
+    <div>
+        <label>Bolumu</label>
+        @Html.DropDownList("ogretmenBolum", new SelectList(new List<SelectListItem>
+{
+new SelectListItem { Text = "Ogretmen Bolumunu Seçiniz", Value = "" },
+new SelectListItem { Text = "Bilgisayar", Value = "Bilgisayar" },
+new SelectListItem { Text = "Makine", Value = "Makine" },
+       new SelectListItem { Text = "Isletme", Value = "Isletme" },
+}, "Value", "Text"), new { @class = "form-control" })
+    </div>
+    
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Ogretmen Ekle</button>
+    </div>
+
+</form>
+

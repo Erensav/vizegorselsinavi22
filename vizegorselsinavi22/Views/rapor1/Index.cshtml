@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Ogrenci ID</th>
+        <th>Ad Soyad</th>
+        <th>Mail Adresi</th>
+        <th>Numarası</th>
+        <th>Bolum</th>
+        <th>Kredi</th>
+        <th>Mezun Durum</th>
+        
+    </tr>
+    <tbody>
+        @foreach (var ogrn in Model)
+        {
+            if (ogrn.ogrenciMezun) // OgrenciMezun değeri true olan öğrencileri filtrele
+            {
+                <tr>
+                    <td>@ogrn.ogrenciid</td>
+                    <th>@ogrn.ogrenciAdSoyadi</th>
+                    <td>@ogrn.ogrencimail</td>
+                    <td>@ogrn.ogrenciNo</td>
+                    <td>@ogrn.ogrencibolum</td>
+                    <td>@ogrn.ogrenciKredi</td>
+                    <td>@ogrn.ogrenciMezun</td>
+                    <td><a href="/ogrenci1/Sil/@ogrn.ogrenciid" class="btn btn-danger">SIL</a></td>
+                    <td><a href="/Ogrenciler1/Guncelle/@ogrn.ogrenciid" class="btn btn-success">GUNCELLE</a></td>
+                    <td><a href="/Ogrenciler1/Not/@ogrn.ogrenciid" class="btn btn-success">Notlar</a></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
