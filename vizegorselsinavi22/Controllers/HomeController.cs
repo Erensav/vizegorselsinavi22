@@ -14,11 +14,34 @@ namespace vizegorselsinavi22.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Index(login log)
+        {
+            var user = db.login.FirstOrDefault(x => x.username == log.username && x.password == log.password);
+
+            if (user != null)
+            {
+                Session["AdminName"] = user.username;
+                
+
+                return View("Dashboard");
+            }
+
+            else
+            {
+                return View();
+            }
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
 
             return View();
+        }
+        public ActionResult Dashboard()
+        {
+            return View();
+
         }
 
         public ActionResult Contact()
