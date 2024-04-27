@@ -5,14 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="vizegorselsinavModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'vizegorselsinav.dbo.admin' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="admin">
-          <Property Name="mudursifre" Type="varchar" MaxLength="50" />
-          <Property Name="mudurid" Type="int" />
-          <Property Name="yetkilikisiid" Type="int" />
-          <Property Name="yetkilisifre" Type="varchar" MaxLength="50" />
-        </EntityType>-->
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -50,8 +50,8 @@ warning 6013: The table/view 'vizegorselsinav.dbo.tbl_mezunlar' does not have a 
           <Property Name="ogrenciNo" Type="int" />
           <Property Name="ogrenciMezun" Type="bit" />
           <Property Name="ogrenciKredi" Type="int" />
-          <Property Name="notgorsel" Type="int" />
-          <Property Name="notmobil" Type="int" />
+          <Property Name="admin" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
           <Property Name="notc" Type="int" />
           <Property Name="ogrencimail" Type="varchar" MaxLength="50" />
           <Property Name="bolumid" Type="int" />
@@ -94,6 +94,7 @@ warning 6013: The table/view 'vizegorselsinav.dbo.tbl_mezunlar' does not have a 
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="vizegorselsinavModelStoreContainer">
+          <EntitySet Name="login" EntityType="Self.login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_idari" EntityType="Self.tbl_idari" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_ogrenciler" EntityType="Self.tbl_ogrenciler" Schema="dbo" store:Type="Tables" />
@@ -112,6 +113,14 @@ warning 6013: The table/view 'vizegorselsinav.dbo.tbl_mezunlar' does not have a 
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="vizegorselsinavModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -141,8 +150,8 @@ warning 6013: The table/view 'vizegorselsinav.dbo.tbl_mezunlar' does not have a 
           <Property Name="ogrenciNo" Type="Int32" />
           <Property Name="ogrenciMezun" Type="Boolean" />
           <Property Name="ogrenciKredi" Type="Int32" />
-          <Property Name="notgorsel" Type="Int32" />
-          <Property Name="notmobil" Type="Int32" />
+          <Property Name="admin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="notc" Type="Int32" />
           <Property Name="ogrencimail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="bolumid" Type="Int32" />
@@ -189,6 +198,7 @@ warning 6013: The table/view 'vizegorselsinav.dbo.tbl_mezunlar' does not have a 
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="vizegorselsinavEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="login" EntityType="Self.login" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="tbl_idari" EntityType="Self.tbl_idari" />
           <EntitySet Name="tbl_ogrenciler" EntityType="Self.tbl_ogrenciler" />
@@ -208,6 +218,15 @@ warning 6013: The table/view 'vizegorselsinav.dbo.tbl_mezunlar' does not have a 
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="vizegorselsinavModelStoreContainer" CdmEntityContainer="vizegorselsinavEntities1">
+          <EntitySetMapping Name="login">
+            <EntityTypeMapping TypeName="vizegorselsinavModel.login">
+              <MappingFragment StoreEntitySet="login">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="vizegorselsinavModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -238,8 +257,8 @@ warning 6013: The table/view 'vizegorselsinav.dbo.tbl_mezunlar' does not have a 
                 <ScalarProperty Name="ogrenciNo" ColumnName="ogrenciNo" />
                 <ScalarProperty Name="ogrenciMezun" ColumnName="ogrenciMezun" />
                 <ScalarProperty Name="ogrenciKredi" ColumnName="ogrenciKredi" />
-                <ScalarProperty Name="notgorsel" ColumnName="notgorsel" />
-                <ScalarProperty Name="notmobil" ColumnName="notmobil" />
+                <ScalarProperty Name="admin" ColumnName="admin" />
+                <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="notc" ColumnName="notc" />
                 <ScalarProperty Name="ogrencimail" ColumnName="ogrencimail" />
                 <ScalarProperty Name="bolumid" ColumnName="bolumid" />

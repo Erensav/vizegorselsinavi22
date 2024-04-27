@@ -25,6 +25,7 @@ namespace vizegorselsinavi22.Models.Entity
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<login> login { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<tbl_idari> tbl_idari { get; set; }
         public virtual DbSet<tbl_ogrenciler> tbl_ogrenciler { get; set; }

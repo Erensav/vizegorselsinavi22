@@ -25,8 +25,8 @@ namespace vizegorselsinavi22.Models.Entity
         public Nullable<int> ogrenciNo { get; set; }
         public Nullable<bool> ogrenciMezun { get; set; }
         public Nullable<int> ogrenciKredi { get; set; }
-        public Nullable<int> notgorsel { get; set; }
-        public Nullable<int> notmobil { get; set; }
+        public string admin { get; set; }
+        public string password { get; set; }
         public Nullable<int> notc { get; set; }
         public string ogrencimail { get; set; }
         public Nullable<int> bolumid { get; set; }
