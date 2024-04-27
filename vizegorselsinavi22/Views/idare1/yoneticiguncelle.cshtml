@@ -20,7 +20,7 @@
         
         <div class="form-group">
             @Html.Label("Unvan")
-            @Html.DropDownList("Unvan", new SelectList(bolumler), new { @class = "form-control" })
+            @Html.DropDownList("idariUnvan", new SelectList(bolumler), new { @class = "form-control" })
         </div>
         Baslama Tarihi
         @Html.EditorFor(m => m.idariBasla, new { @class = "form-control" })
