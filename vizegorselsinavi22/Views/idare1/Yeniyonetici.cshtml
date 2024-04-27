@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Yeniyonetici";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<form class="form-group" method="post">
+
+    <div>
+        <label>Yonetici Ad Soyad</label>
+        <input type="text" class="form-control" name="idariAdSoyad" />
+    </div>
+    <div>
+        <label>Unvan</label>
+        @Html.DropDownList("idariUnvan", new SelectList(new List<SelectListItem>
+{
+new SelectListItem { Text = "Unvan Seçiniz", Value = "" },
+new SelectListItem { Text = "Yardimci", Value = "Yardimci" },
+new SelectListItem { Text = "Ogretmen", Value = "Ogretmen" },
+       new SelectListItem { Text = "Bilgi Islem", Value = "Bilgi Islem" },
+}, "Value", "Text"), new { @class = "form-control" })
+    </div>
+    <div>
+        <label>Baslama Tarihi</label>
+        <input type="date" class="form-control" name="idariBasla" />
+    </div>
+    <div>
+        <label>Cikis Tarihi</label>
+        <input type="date" class="form-control" name="idariCikis" />
+    </div>
+
+
+    <div style="margin-top:15px">
+        <button class="btn btn-info">Yonetici Ekle</button>
+    </div>
+
+</form>
+

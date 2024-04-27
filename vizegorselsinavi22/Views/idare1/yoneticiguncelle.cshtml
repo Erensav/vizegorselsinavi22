@@ -1,0 +1,35 @@
+﻿@model vizegorselsinavi22.Models.Entity.tbl_idari
+
+@{
+    ViewBag.Title = "yoneticiguncelle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    // Bölüm listesi (Örnek: Veritabanından veya sabit bir liste olarak tanımlanabilir)
+    var bolumler = new List<string>() { "Yardimci", "Ogretmen", "bilgi islem" };
+}
+
+@using (Html.BeginForm("Guncelle", "idare1", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.idariid)
+        @Html.TextBoxFor(m => m.idariid, new { @class = "form-control" })
+        <br />
+        Ad Soyad
+        @Html.TextBoxFor(m => m.idariAdSoyad, new { @class = "form-control" })
+        <br />      
+        
+        <div class="form-group">
+            @Html.Label("Unvan")
+            @Html.DropDownList("Unvan", new SelectList(bolumler), new { @class = "form-control" })
+        </div>
+        Baslama Tarihi
+        @Html.EditorFor(m => m.idariBasla, new { @class = "form-control" })
+        <br />
+        Cikis Tarihi
+        @Html.EditorFor(m => m.idariCikis, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Yonetici Guncelle</button>
+    </div>
+}
+

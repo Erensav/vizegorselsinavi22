@@ -243,6 +243,8 @@
     <Content Include="Views\rapor1\Index.cshtml" />
     <Content Include="Views\ogrenci1\ogrenciguncellle.cshtml" />
     <Content Include="Views\ogretmen1\ogretmenguncelle.cshtml" />
+    <Content Include="Views\idare1\Yeniyonetici.cshtml" />
+    <Content Include="Views\idare1\yoneticiguncelle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
