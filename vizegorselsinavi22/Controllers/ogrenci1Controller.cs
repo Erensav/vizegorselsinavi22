@@ -65,13 +65,14 @@ namespace vizegorselsinavi22.Controllers
                 }
             }
 
-            // Seçilen değerleri veritabanına kaydetme
+            
             ogren.ogrencibolum = secilenBolum;
             ogren.ogrenciMezun = secilenMezunDurumu == "Mezun" ? true : false;
 
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        
 
 
     }
