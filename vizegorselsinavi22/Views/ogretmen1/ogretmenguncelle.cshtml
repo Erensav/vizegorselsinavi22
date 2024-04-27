@@ -1,0 +1,37 @@
+﻿@model vizegorselsinavi22.Models.Entity.tbl_ogretmen
+
+@{
+    ViewBag.Title = "ogretmenguncelle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    // Bölüm listesi (Örnek: Veritabanından veya sabit bir liste olarak tanımlanabilir)
+    var bolumler = new List<string>() { "Bilgisayar", "Makine", "isletme" };
+}
+
+
+@using (Html.BeginForm("Guncelle", "ogretmen1", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.ogretmenid)
+        @Html.TextBoxFor(m => m.ogretmenid, new { @class = "form-control" })
+        <br />
+        Adi
+        @Html.TextBoxFor(m => m.ogretmenAd, new { @class = "form-control" })
+        <br />
+        Soyadi
+        @Html.TextBoxFor(m => m.ogretmenSoyad, new { @class = "form-control" })
+        <div class="form-group">
+            @Html.Label("Bölüm")
+            @Html.DropDownList("ogretmenBolum", new SelectList(bolumler), new { @class = "form-control" })
+        </div>
+        Baslama Tarihi
+        @Html.EditorFor(m => m.ogretmenBasla, new { @class = "form-control" })
+        <br/>
+        Cikis Tarihi
+        @Html.EditorFor(m => m.ogretmenCikis, new { @class = "form-control" })
+    </div>
+    <div>
+        <button class="btn btn-warning">Ogretmen Guncelle</button>
+    </div>
+}
+
